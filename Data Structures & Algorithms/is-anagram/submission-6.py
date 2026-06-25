@@ -1,0 +1,25 @@
+# Prac
+## Sorting
+# class Solution:
+#     def isAnagram(self, s: str, t: str) -> bool:
+#         if len(s) != len(t):
+#             return False
+#         return sorted(s) == sorted(t)
+        # built in function which takes each char out 
+        # and puts them in a list and sorts it
+
+        # we cannot use .sort() after converting s, t to list because it modifies
+        # original list and the original list looses it's order
+        # to prevent original list losing it's order .sort() works only in memory
+        # and returns None value into a variable
+
+## Hash Map
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        countS, countT = {}, {}
+        for i in range(len(s)):
+            countS[s[i]] = 1+countS.get(s[i],0)
+            countT[t[i]] = 1+countT.get(t[i],0)
+        return countS == countT
